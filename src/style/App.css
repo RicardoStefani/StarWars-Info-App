@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  height: 150px;
+  padding: 20px;
+  overflow: hidden ;
+  background-image: url("../imgs/Star_Wars_Logo.png" ) ;
+  background-position: center center ;
+  background-size: 80% auto ;
+  background-repeat: no-repeat;
+  background-color: #000;
+}
+
+.App-Home {
+  margin: 10px;
+  padding: 15px;
+}
+
+.App-body {
+  text-align: left;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 15px;
+}
+
+button {
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #009688;
+  padding: 15px 25px;
+  font-size: 16px;
+  letter-spacing: .2px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #4DB6AC;
+}
