@@ -34,10 +34,22 @@ export class SWAPI {
     });
   }
 
+  getPeopleAmount() {
+    return fetch("http://swapi.co/api/people/")
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson.count;
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  }
+
   getPerson(personId) {
     return fetch("http://swapi.co/api/people/"+personId+"/")
     .then((response) => response.json())
     .then((responseJson) => {
+      responseJson.filmsLength = responseJson.films.length+ " " + ((responseJson.films.length === 1) ? "film": "films");
       return responseJson;
     })
     .catch((error) => {
