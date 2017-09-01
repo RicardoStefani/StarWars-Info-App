@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../style/App.css';
 import {SWAPI} from '../services/SWAPI';
+import AppPlanet from './AppPlanet';
 
 class App extends Component {
   
@@ -32,25 +33,7 @@ class App extends Component {
     {
       return (
         <div className="App">
-          <div className="App-header">
-          </div>
-          <div>
-            <h2>{this.state.planet.name}</h2>
-            <div className="App-body">
-              <p>
-                <b>Population:</b> {this.state.planet.population}
-              </p>
-              <p>
-                <b>Climate:</b> {this.state.planet.climate}
-              </p>
-              <p>
-                <b>Terrain:</b> {this.state.planet.terrain}
-              </p>
-              <p>
-                Featured in {this.state.planet.filmsLength}
-              </p>
-            </div>
-          </div>
+          <AppPlanet planet={this.state.planet} />
           <button onClick={this.nextPlanet}>Next</button>
         </div>
       );
@@ -58,10 +41,8 @@ class App extends Component {
     else{
       return (
         <div className="App">
-          <div className="App-header">
-          </div>
           <div className="App-Home">
-            <button onClick={this.nextPlanet}>Start</button>
+            <button onClick={this.nextPlanet}>Show Planet</button>
           </div>
         </div>
       );
