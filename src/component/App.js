@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../style/App.css';
 import {SWAPI} from '../services/SWAPI';
+import AppHeader from './AppHeader';
 import AppPlanet from './AppPlanet';
 import AppPerson from './AppPerson';
 
@@ -24,6 +25,7 @@ class App extends Component {
 
     this.nextPlanet = this.nextPlanet.bind(this);
     this.nextPerson = this.nextPerson.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   nextPlanet(){
@@ -31,7 +33,7 @@ class App extends Component {
     var planetId = Math.floor(Math.random() * this.planetCount) + 1;
     this.swapi.getPlanet(planetId).then((planet) => {
       self.setState({planet: planet});
-  });
+    });
   }
 
   nextPerson(){
@@ -39,7 +41,12 @@ class App extends Component {
     var personId = Math.floor(Math.random() * this.peopleCount) + 1;
     this.swapi.getPerson(personId).then((person) => {
       self.setState({person: person});
-  });
+    });
+  }
+
+  reset(){
+    this.setState({planet: {}});
+    this.setState({person: {}});
   }
 
   render() {
@@ -47,6 +54,7 @@ class App extends Component {
     {
       return (
         <div className="App">
+          <button onClick={this.reset}>reset</button>
           <AppPlanet planet={this.state.planet} />
           <button onClick={this.nextPlanet}>Next</button>
         </div>
@@ -56,6 +64,7 @@ class App extends Component {
     {
       return (
         <div className="App">
+          <button onClick={this.reset}>reset</button>
           <AppPerson person={this.state.person} />
           <button onClick={this.nextPerson}>Next</button>
         </div>
@@ -65,6 +74,7 @@ class App extends Component {
     {
       return (
         <div className="App">
+          <AppHeader />
           <div className="App-Home">
             <button onClick={this.nextPlanet}>Show Planet</button>
             <br />

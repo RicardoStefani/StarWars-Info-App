@@ -5,9 +5,6 @@ import AppHeader from './component/AppHeader';
 import './style/index.css';
 
 ReactDOM.render(
-  <div>
-    <AppHeader />
-    <App />
-  </div>,
+  <App />,
   document.getElementById('root')
 );
