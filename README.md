@@ -1,4 +1,4 @@
-# Star Wars App Planet
+# Star Wars Info App
 
 This project is a react project using a [SWAPI - Star Wars API](https://swapi.co/). The object with that is create a react app with all informations and integrations about Star Wars using [SWAPI](https://swapi.co/). Everyone can update and improve this project!
 
