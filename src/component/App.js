@@ -54,8 +54,11 @@ class App extends Component {
     {
       return (
         <div className="App">
-          <button onClick={this.reset}>reset</button>
+          <h1 className="App-Title">
+            Planet
+          </h1>
           <AppPlanet planet={this.state.planet} />
+          <button onClick={this.reset}>Back</button>
           <button onClick={this.nextPlanet}>Next</button>
         </div>
       );
@@ -64,8 +67,11 @@ class App extends Component {
     {
       return (
         <div className="App">
-          <button onClick={this.reset}>reset</button>
+          <h1 className="App-Title">
+            Person
+          </h1>
           <AppPerson person={this.state.person} />
+          <button onClick={this.reset}>Back</button>
           <button onClick={this.nextPerson}>Next</button>
         </div>
       );
@@ -77,8 +83,6 @@ class App extends Component {
           <AppHeader />
           <div className="App-Home">
             <button onClick={this.nextPlanet}>Show Planet</button>
-            <br />
-            <br />
             <button onClick={this.nextPerson}>Show Person</button>
           </div>
         </div>
