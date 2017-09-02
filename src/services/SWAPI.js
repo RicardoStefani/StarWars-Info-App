@@ -61,7 +61,19 @@ export class SWAPI {
     return fetch("http://swapi.co/api/species/"+specieId+"/")
     .then((response) => response.json())
     .then((responseJson) => {
+      responseJson.filmsLength = responseJson.films.length+ " " + ((responseJson.films.length === 1) ? "film": "films");
       return responseJson;
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  }
+
+  getStarshipAmount() {
+    return fetch("http://swapi.co/api/starships/")
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson.count;
     })
     .catch((error) => {
       console.warn(error);
@@ -72,6 +84,7 @@ export class SWAPI {
     return fetch("http://swapi.co/api/starships/"+starshipId+"/")
     .then((response) => response.json())
     .then((responseJson) => {
+      responseJson.filmsLength = responseJson.films.length+ " " + ((responseJson.films.length === 1) ? "film": "films");
       return responseJson;
     })
     .catch((error) => {
