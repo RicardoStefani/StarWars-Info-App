@@ -23,6 +23,17 @@ export class SWAPI {
     });
   }
 
+  getFilmsAmount() {
+    return fetch("http://swapi.co/api/films/")
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson.count;
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  }
+
   getFilm(filmId) {
     return fetch("http://swapi.co/api/films/"+filmId+"/")
     .then((response) => response.json())
@@ -51,6 +62,17 @@ export class SWAPI {
     .then((responseJson) => {
       responseJson.filmsLength = responseJson.films.length+ " " + ((responseJson.films.length === 1) ? "film": "films");
       return responseJson;
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  }
+
+  getSpeciesAmount() {
+    return fetch("http://swapi.co/api/species/")
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson.count;
     })
     .catch((error) => {
       console.warn(error);
@@ -86,6 +108,17 @@ export class SWAPI {
     .then((responseJson) => {
       responseJson.filmsLength = responseJson.films.length+ " " + ((responseJson.films.length === 1) ? "film": "films");
       return responseJson;
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  }
+
+  getVehiclesAmount() {
+    return fetch("http://swapi.co/api/vehicles/")
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson.count;
     })
     .catch((error) => {
       console.warn(error);

@@ -6,6 +6,9 @@ class AppStarship extends Component {
   render() {
       return (
         <div className="App-Planet">
+          <h1 className="App-Title">
+            {this.props.title}
+          </h1>
           <h2>{this.props.starship.name}</h2>
           <div className="App-body">
             <p>
