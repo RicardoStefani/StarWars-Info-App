@@ -1,27 +1,37 @@
 export class SWAPI {
-    
-  getPlanetsAmount() {
-    return fetch("http://swapi.co/api/planets/")
-    .then((response) => response.json())
-    .then((responseJson) => {
-      return responseJson.count;
-    })
-    .catch((error) => {
-      console.warn(error);
-    });
+  
+  constructor()
+  {
+    this._url = "http://swapi.co/api/";
   }
 
-  getPlanet(planetId) {
-    return fetch("http://swapi.co/api/planets/"+planetId+"/")
-    .then((response) => response.json())
-    .then((responseJson) => {
-      responseJson.filmsLength = responseJson.films.length+ " " + ((responseJson.films.length === 1) ? "film": "films");
-      return responseJson;
-    })
-    .catch((error) => {
-      console.warn(error);
-    });
-  }
+  getPlanetsAmount() {
+		return fetch("http://swapi.co/api/planets/")
+		.then((response) => response.json())
+		.then((responseJson) => {
+			return responseJson.count;
+		})
+		.catch((error) => {
+			console.warn(error);
+		});
+	}
+
+  get(method, id = "") {
+    let url = this._url + method;
+
+    if (id) {
+      url += "/" + id;
+    }
+
+		return fetch(url)
+		.then((response) => response.json())
+		.then((responseJson) => {
+			return responseJson;
+		})
+		.catch((error) => {
+			console.warn(error);
+		});
+	}
 
   getFilmsAmount() {
     return fetch("http://swapi.co/api/films/")
