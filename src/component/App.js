@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import '../style/App.css';
 import {SWAPI} from '../infrastructure/SWAPI';
 import {PlanetService} from '../services/PlanetService';
+import {FilmService} from '../services/FilmService';
+import {PersonService} from '../services/PersonService';
+import {SpecieService} from '../services/SpecieService';
+import {StarshipService} from '../services/StarshipService';
+import {VehicleService} from '../services/VehicleService';
 import AppHeader from './AppHeader';
 import AppPlanet from './AppPlanet';
 import AppPerson from './AppPerson';
@@ -29,24 +34,33 @@ class App extends Component {
 	 
 		this._swapi = new SWAPI();
 		this._planet_service = new PlanetService(this._swapi);
+		this._film_service = new FilmService(this._swapi);
+		this._person_service = new PersonService(this._swapi);
+		this._specie_service = new SpecieService(this._swapi);
+		this._starship_service = new StarshipService(this._swapi);
+		this._vehicle_service = new VehicleService(this._swapi);
 
 		this._planet_service.getPlanetsAmount().then((planetCount) => {
 				self.planetCount = planetCount;
 		});
 
-		this._swapi.getPeopleAmount().then((peopleCount) => {
-				self.peopleCount = peopleCount;
-		});
-		this._swapi.getStarshipAmount().then((starshipCount) => {
-				self.starshipCount = starshipCount;
-		});
-		this._swapi.getFilmsAmount().then((filmCount) => {
+		this._film_service.getFilmsAmount().then((filmCount) => {
 				self.filmCount = filmCount;
 		});
-		this._swapi.getSpeciesAmount().then((specieCount) => {
+
+		this._person_service.getPeopleAmount().then((peopleCount) => {
+			self.peopleCount = peopleCount;
+		});
+
+		this._specie_service.getSpeciesAmount().then((specieCount) => {
 				self.specieCount = specieCount;
 		});
-		this._swapi.getVehiclesAmount().then((vehicleCount) => {
+
+		this._starship_service.getStarshipAmount().then((starshipCount) => {
+				self.starshipCount = starshipCount;
+		});
+
+		this._vehicle_service.getVehiclesAmount().then((vehicleCount) => {
 				self.vehicleCount = vehicleCount;
 		});
 
@@ -70,23 +84,15 @@ class App extends Component {
 	nextPerson(){
 		var self = this;
 		var personId = Math.floor(Math.random() * this.peopleCount) + 1;
-		this._swapi.getPerson(personId).then((person) => {
+		this._person_service.getPerson(personId).then((person) => {
 			self.setState({person: person});
-		});
-	}
-
-	nextStarship(){
-		var self = this;
-		var starshipId = Math.floor(Math.random() * this.starshipCount) + 1;
-		this._swapi.getStarship(starshipId).then((starship) => {
-			self.setState({starship: starship});
 		});
 	}
 
 	nextFilm(){
 		var self = this;
 		var filmId = Math.floor(Math.random() * this.filmCount) + 1;
-		this._swapi.getFilm(filmId).then((film) => {
+		this._film_service.getFilm(filmId).then((film) => {
 			self.setState({film: film});
 		});
 	}
@@ -94,15 +100,23 @@ class App extends Component {
 	nextSpecie(){
 		var self = this;
 		var specieId = Math.floor(Math.random() * this.specieCount) + 1;
-		this._swapi.getSpecie(specieId).then((specie) => {
+		this._specie_service.getSpecie(specieId).then((specie) => {
 			self.setState({specie: specie});
+		});
+	}
+
+	nextStarship(){
+		var self = this;
+		var starshipId = Math.floor(Math.random() * this.starshipCount) + 1;
+		this._starship_service.getStarship(starshipId).then((starship) => {
+			self.setState({starship: starship});
 		});
 	}
 
 	nextVehicle(){
 		var self = this;
 		var vehicleId = Math.floor(Math.random() * this.vehicleCount) + 1;
-		this._swapi.getVehicle(vehicleId).then((vehicle) => {
+		this._vehicle_service.getVehicle(vehicleId).then((vehicle) => {
 			self.setState({vehicle: vehicle});
 		});
 	}
