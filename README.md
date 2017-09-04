@@ -6,7 +6,7 @@ This project is a react project using a [SWAPI - Star Wars API](https://swapi.co
  - New calls with SWAPI;
  - Create place to show info about people;
  - New style;
- - Add Starship place
+ - Add Starship, Films, Species and Vehicles place
 
 
 ## version 0.1.0
