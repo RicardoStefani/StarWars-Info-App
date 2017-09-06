@@ -6,6 +6,7 @@ This project is a react project using a [SWAPI - Star Wars API](https://swapi.co
  - Clean SWAPI
  - Create Film, Person, Planet, Specie, Starship and Vehicle
  - Update App.js to use this Services
+ - Start IoC in App
 
 ## version 0.1.5
  - New calls with SWAPI;
